@@ -260,7 +260,7 @@ header nav a.active::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('assets/hero.jpg') center/cover no-repeat;
+  background: url('./assets/hero.jpg') center/cover no-repeat;
   opacity: 0.1;
   z-index: 1;
 }
@@ -660,7 +660,7 @@ section {
 .timeline {
   background: var(--bg-secondary);
   position: relative;
-  background-image: url('assets/Education.jpg');
+  background-image: url('./assets/Education.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1030,7 +1030,7 @@ section {
 .contact {
   background: var(--bg-accent);
   position: relative;
-  background-image: url('assets/IT.jpg');
+  background-image: url('./assets/IT.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
