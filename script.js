@@ -271,22 +271,75 @@ window.addEventListener('scroll', function() {
 window.addEventListener('scroll', function() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     let current = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        
+
         if (window.pageYOffset >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');
         }
+    });
+});
+
+// Custom Video Player Controls
+document.addEventListener('DOMContentLoaded', function() {
+    const projectVideos = document.querySelectorAll('.project-video');
+
+    projectVideos.forEach(video => {
+        const playButton = video.parentElement.querySelector('.video-play-button');
+        const projectCard = video.closest('.project-card');
+
+        // Play button click handler
+        playButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+
+            if (video.paused) {
+                // Hide play button and start video
+                playButton.classList.add('playing');
+                video.classList.add('playing');
+                video.play().catch(e => console.log('Video play failed:', e));
+            }
+        });
+
+        // Video click handler (pause and show play button)
+        video.addEventListener('click', function(e) {
+            e.stopPropagation();
+
+            if (!video.paused) {
+                video.pause();
+                video.currentTime = 0;
+                playButton.classList.remove('playing');
+                video.classList.remove('playing');
+            }
+        });
+
+        // Video ended handler
+        video.addEventListener('ended', function() {
+            video.currentTime = 0;
+            playButton.classList.remove('playing');
+            video.classList.remove('playing');
+        });
+
+        // Pause when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!projectCard.contains(e.target)) {
+                if (!video.paused) {
+                    video.pause();
+                    video.currentTime = 0;
+                    playButton.classList.remove('playing');
+                    video.classList.remove('playing');
+                }
+            }
+        });
     });
 });
