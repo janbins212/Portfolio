@@ -899,7 +899,31 @@ section {
 .projects {
   background: var(--bg-primary);
 }
+/* Project Disclaimer */
+.project-disclaimer {
+  background: var(--bg-accent);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.project-disclaimer p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.project-disclaimer strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
